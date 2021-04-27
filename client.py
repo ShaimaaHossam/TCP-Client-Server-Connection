@@ -10,6 +10,7 @@ port = 12345
 op = input("Enter the operation number")
 packet = []
 packet.append(int(op))
+seed(1)
 for i in range(100):
     packet.append(randint(1, 100))
 
