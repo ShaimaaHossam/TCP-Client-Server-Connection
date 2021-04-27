@@ -7,8 +7,7 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # TCP socket o
 serverSocket.bind((host, port))
 print("Waiting for clients..")
 serverSocket.listen(5)
-sum =0
-avg = 0
+
 
 def Reverse(lst):
     return [ele for ele in reversed(lst)]
@@ -21,6 +20,8 @@ while True:
     op_no = packet[0]
     data = packet[1:]
     if op_no == 1:
+        sum =0
+        avg = 0
         for i in data:
             sum = sum+i
         avg = sum/len(data)
