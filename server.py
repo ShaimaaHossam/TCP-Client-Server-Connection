@@ -20,22 +20,26 @@ while True:
     op_no = packet[0]
     data = packet[1:]
     if op_no == 1:
-        sum =0
+        sum = 0
         avg = 0
         for i in data:
             sum = sum+i
         avg = sum/len(data)
-        print(f'Sum = {sum}, Average = {avg}')
+        packet = [f'Sum is {sum}', f'Average is {avg}']
 
     elif op_no == 2:
         maximum = max(data)
         minimum = min(data)
-        print(f'Maximum Number: {maximum}, Minimum Number: {minimum}')
+        packet = [f'Max is {maximum}', f'Min is {minimum}']
     elif op_no == 3:
         rev = Reverse(data)
-        print(rev)
+        packet = [f'Reversed Array is {rev}']
     elif op_no == 4:
         sorted_arr = sorted(data)
-        print(sorted_arr)
+        packet = [f'Sorted Array is {sorted_arr}']
+
+    packet = pickle.dumps(packet)
+    conn.send(packet)
+
 
 conn.close()
