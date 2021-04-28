@@ -1,4 +1,3 @@
-
 import socket
 import pickle
 from random import seed
@@ -19,3 +18,7 @@ packet = pickle.dumps(packet)
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientSocket.connect((host, port))
 clientSocket.send(packet)
+rec = clientSocket.recv(1024)
+rec = pickle.loads(rec)
+
+print(f'Server replied : [{rec}]')
